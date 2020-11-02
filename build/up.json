@@ -1,0 +1,8 @@
+{
+  "name": "session-timer-session",
+  "profile": "newton",
+  "type": "static",
+  "regions": [
+    "us-east-1"
+  ]
+}

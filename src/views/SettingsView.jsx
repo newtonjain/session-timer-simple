@@ -38,68 +38,68 @@ const SettingsList = ({
   classes,
   ...props
 }) => (
-  <div className={classes.root} {...props}>
-    <List
-      className="settings"
-      subheader={<ListSubheader>Settings</ListSubheader>}>
-      <Setting
-        label="Display earned salary"
-        value={settings.showEarnedSalary}
-        onChange={value =>
-          onSettingChange('setDisplayEarnedSalary', value)}
-        Icon={<EarnedSalaryIcon />}
-      />
-      {settings.showEarnedSalary ? (
-        <ListItem>
-          <TextField
-            label="Hourly rate"
-            type="number"
-            value={settings.hourlyRate}
-            placeholder="123"
-            min={1}
-            onChange={({ target: { value } }) =>
-              onSettingChange('setHourlyRate', value)}
-          />
-        </ListItem>
-      ) : (
-        []
-      )}
-      <Setting
-        label="Enable breaks"
-        value={settings.enableBreaks}
-        onChange={value =>
-          onSettingChange('setEnableBreaks', value)}
-        Icon={<BreaksIcon />}
-      />
-      {settings.enableBreaks ? (
-        <ListItem>
-          <TextField
-            label="Session duration"
-            type="number"
-            min="1"
-            value={settings.sessionDuration}
-            placeholder="in minutes"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  minutes
-                </InputAdornment>
-              )
-            }}
-            onChange={({ target: { value } }) =>
-              onSettingChange('setSessionDuration', value)}
-          />
-        </ListItem>
-      ) : (
-        []
-      )}
-      {settings.enableBreaks ? (
+    <div className={classes.root} {...props}>
+      <List
+        className="settings"
+        subheader={<ListSubheader>Settings</ListSubheader>}>
         <Setting
-          label="Break notifications"
-          value={settings.notifications}
-          onChange={checked =>
-            checked
-              ? Notification.requestPermission().then(
+          label="Display earned salary"
+          value={settings.showEarnedSalary}
+          onChange={value =>
+            onSettingChange('setDisplayEarnedSalary', value)}
+          Icon={<EarnedSalaryIcon />}
+        />
+        {settings.showEarnedSalary ? (
+          <ListItem>
+            <TextField
+              label="Hourly rate"
+              type="number"
+              value={settings.hourlyRate}
+              placeholder="123"
+              min={1}
+              onChange={({ target: { value } }) =>
+                onSettingChange('setHourlyRate', value)}
+            />
+          </ListItem>
+        ) : (
+            []
+          )}
+        <Setting
+          label="Enable breaks"
+          value={settings.enableBreaks}
+          onChange={value =>
+            onSettingChange('setEnableBreaks', value)}
+          Icon={<BreaksIcon />}
+        />
+        {settings.enableBreaks ? (
+          <ListItem>
+            <TextField
+              label="Session duration"
+              type="number"
+              min="1"
+              value={settings.sessionDuration}
+              placeholder="in minutes"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    minutes
+                  </InputAdornment>
+                )
+              }}
+              onChange={({ target: { value } }) =>
+                onSettingChange('setSessionDuration', value)}
+            />
+          </ListItem>
+        ) : (
+            []
+          )}
+        {settings.enableBreaks ? (
+          <Setting
+            label="Break notifications"
+            value={settings.notifications}
+            onChange={checked =>
+              checked
+                ? Notification.requestPermission().then(
                   result =>
                     navigator.serviceWorker.ready.then(() =>
                       onSettingChange(
@@ -108,33 +108,26 @@ const SettingsList = ({
                       )
                     )
                 )
-              : onSettingChange(
+                : onSettingChange(
                   'setEnableNotifications',
                   checked
                 )}
-          Icon={<NotificationsIcon />}
-        />
-      ) : (
-        []
-      )}
-      {/* Redisplay when remember settings is working */
+            Icon={<NotificationsIcon />}
+          />
+        ) : (
+            []
+          )}
+        {/* Redisplay when remember settings is working */
       /*
 			<Setting
 				label="Remember settings"
 				value={settings.rememberSettings}
 			onChange={ value => onSettingChange("setRememberSettings", value )} />
 		*/}
-    </List>
-    <Button
-      variant="raised"
-      color="primary"
-      className={classes.showAboutDialogButton}
-      onClick={onAboutDialogOpen}>
-      About Tomato Hours
-    </Button>
-    <AboutDialog />
-  </div>
-)
+      </List>
+      <AboutDialog />
+    </div>
+  )
 
 SettingsList.propTypes = {
   onSettingChange: PropTypes.func.isRequired,

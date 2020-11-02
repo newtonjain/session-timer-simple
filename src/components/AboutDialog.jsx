@@ -14,64 +14,63 @@ let AboutDialog = ({
   onAboutDialogClose,
   displayAboutDialog
 }) => (
-  <Dialog
-    open={displayAboutDialog}
-    onClose={onAboutDialogClose}
-    aria-labelledby="about-dialog-title">
-    <DialogTitle id="aboutdialog-title">
-      About Tomato Hours
+    <Dialog
+      open={displayAboutDialog}
+      onClose={onAboutDialogClose}
+      aria-labelledby="about-dialog-title">
+      <DialogTitle id="aboutdialog-title">
+        About Tomato Hours
     </DialogTitle>
-    <List dense={true}>
-      <ListItem>
-        <ListItemText
-          primary="Version"
-          secondary={version}
-        />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Author"
-          secondary={
-            <span>
-              {author.name}{' '}
-              <a
-                href={
-                  author.url +
-                  '/?utm_source=th-app&utm_medium=about-dialog'
-                }
-                target="_blank"
-                rel="noopener noreferrer">
-                {/* {'<'} */}
-                {author.url}
-                {/* {'>'} */}
-              </a>
-            </span>
-          }
-        />
-      </ListItem>
-    </List>
-    <div style={{ padding: '1rem' }}>
-      <Grid container alignContent="flex-end" spacing={16}>
-        <Grid item>
-          <Button
-            element={'a'}
-            href={`mailto:${
-              author.email
-            }?subject=Tomato Hours`}
-            variant="raised"
-            color="primary">
-            Contact author
+      <List dense={true}>
+        <ListItem>
+          <ListItemText
+            primary="Version"
+            secondary={version}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary="Author"
+            secondary={
+              <span>
+                {author.name}{' '}
+                <a
+                  href={
+                    author.url +
+                    '/?utm_source=th-app&utm_medium=about-dialog'
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {/* {'<'} */}
+                  {author.url}
+                  {/* {'>'} */}
+                </a>
+              </span>
+            }
+          />
+        </ListItem>
+      </List>
+      <div style={{ padding: '1rem' }}>
+        <Grid container alignContent="flex-end" spacing={16}>
+          <Grid item>
+            <Button
+              element={'a'}
+              href={`mailto:${author.email
+                }?subject=Tomato Hours`}
+              variant="raised"
+              color="primary">
+              Contact author
           </Button>
-        </Grid>
-        <Grid item>
-          <Button onClick={onAboutDialogClose}>
-            Close
+          </Grid>
+          <Grid item>
+            <Button onClick={onAboutDialogClose}>
+              Close
           </Button>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  </Dialog>
-)
+      </div>
+    </Dialog>
+  )
 
 const mapStateToProps = ({
   settings: { displayAboutDialog }
