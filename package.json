@@ -1,0 +1,57 @@
+{
+  "name": "tomato-hours",
+  "version": "1.4.6",
+  "private": true,
+  "homepage": "https://tomato-hours.joglr.dev/",
+  "author": {
+    "name": "Jonas Røssum",
+    "url": "https://joglr.dev",
+    "email": "jonas.g.roessum@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joglr/tomato-hours.git"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rimraf build && react-scripts build && npm run icon",
+    "serve-build": "npm run build && npx serve build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
+    "test-watch": "react-scripts test --env=jsdom --verbose",
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "eject": "react-scripts eject",
+    "icon": "real-favicon generate ./graphics/faviconDescription.json ./graphics/faviconData.json ./build && real-favicon inject ./graphics/faviconData.json ./build ./build/index.html",
+    "check-icon-update": "real-favicon check-for-update --fail-on-update ./graphics/faviconData.json"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.4",
+    "@material-ui/icons": "^3.0.2",
+    "lodash.debounce": "^4.0.8",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "raven-js": "^3.27.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-ga": "^2.7.0",
+    "react-md": "^1.14.1",
+    "react-redux": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-timer-middleware": "^1.0.0",
+    "roboto-fontface": "^0.10.0"
+  },
+  "devDependencies": {
+    "cli-real-favicon": "0.0.8",
+    "cross-env": "^5.2.1",
+    "react-scripts": "^2.1.8",
+    "rimraf": "^3.0.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
